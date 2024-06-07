@@ -36,9 +36,9 @@ This repo is used to run a script that does the majority of the work for setting
 - Wait a minute or two after everything is finished running and then use the IP address that was output to connect to the minecraft server via the minecraft launcher. 
 
 ### Sources
-https://aws.amazon.com/blogs/gametech/setting-up-a-minecraft-java-server-on-amazon-ec2/
-https://developer.hashicorp.com/terraform/docs
-https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html
-https://docs.ansible.com/
-https://chatgpt.com/
+  - https://aws.amazon.com/blogs/gametech/setting-up-a-minecraft-java-server-on-amazon-ec2/
+  - https://developer.hashicorp.com/terraform/docs
+  - https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html
+  - https://docs.ansible.com/
+  - https://chatgpt.com/
   
