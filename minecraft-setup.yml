@@ -1,0 +1,61 @@
+---
+- name: Setup and Install Minecraft Server
+  hosts: server
+  become: true
+  become_method: sudo
+
+  tasks:
+    - name: Install python
+      dnf:
+        name: python3
+        state: present
+
+    - name: Update packages
+      dnf:
+        name: "*"
+        state: latest
+
+    - name: Download java
+      get_url:
+        url: https://download.oracle.com/java/22/latest/jdk-22_linux-aarch64_bin.rpm
+        dest: /tmp/jdk-22_linux-aarch64_bin.rpm
+
+    - name: Install Java
+      dnf:
+        name: /tmp/jdk-22_linux-aarch64_bin.rpm
+        state: present
+        disable_gpg_check: true
+
+    - name: Make Minecraft directory
+      file:
+        path: /opt/minecraft
+        state: directory
+
+    - name: Download Minecraft server
+      get_url:
+        url: https://piston-data.mojang.com/v1/objects/145ff0858209bcfc164859ba735d4199aafa1eea/server.jar
+        dest: /opt/minecraft/server.jar
+
+    - name: Accept Minecraft EULA
+      copy:
+        content: "eula=true"
+        dest: /opt/minecraft/eula.txt
+
+    - name: Deploy Minecraft systemd service file
+      template:
+        src: minecraft.service
+        dest: /etc/systemd/system/minecraft.service
+
+    - name: Reload systemd daemon
+      systemd:
+        daemon_reload: true
+
+    - name: Enable Minecraft service
+      systemd:
+        name: minecraft
+        enabled: true
+
+    - name: Start Minecraft service
+      systemd:
+        name: minecraft
+        state: started
