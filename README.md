@@ -31,6 +31,10 @@ This repo is used to run a script that does the majority of the work for setting
   - run the deploy script with admin privileges. The script will generate a key pair, run the terraform file that creates an EC2 instance on Amazon, sleep for two minutes to give the instance time to set up, and then run an ansible playbook that remotes in to the EC2 instance and does everything needed to set up the minecraft server. You may be asked to input "Y" or "yes" at various spots to give permission for installation and SSH connections.
     - `sudo bash deploy.bash`
    
+### How to connect to the Minecraft server once it's running?
+
+- Wait a minute or two after everything is finished running and then use the IP address that was output to connect to the minecraft server via the minecraft launcher. 
+
 ### Sources
 https://aws.amazon.com/blogs/gametech/setting-up-a-minecraft-java-server-on-amazon-ec2/
 https://developer.hashicorp.com/terraform/docs
@@ -38,7 +42,3 @@ https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html
 https://docs.ansible.com/
 https://chatgpt.com/
   
-
-### How to connect to the Minecraft server once it's running?
-
-- Wait a minute or two after everything is finished running and then use the IP address that was output to connect to the minecraft server via the minecraft launcher. 
